@@ -1,11 +1,11 @@
 import { render , screen} from "@testing-library/react";
 import Header from "../Header";
 import { Provider } from "react-redux";
-import appStore from "../../utilis/appStore";
+import appStore from "../../utils/appStore";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 
-it("Should render header componenr with Login button",()=> {
+it("Should render header component with Login button",()=> {
   render(
     <BrowserRouter>
       <Provider store={appStore}>
@@ -24,7 +24,7 @@ it("Should render header componenr with Login button",()=> {
   expect(loginBtn).toBeInTheDocument();
 })
 
-it("Should render header componenr with CART ITEMS = 0", () => {
+it("Should render header component with CART ITEMS = 0", () => {
   render(
     <BrowserRouter>
       <Provider store={appStore}>
@@ -38,7 +38,7 @@ it("Should render header componenr with CART ITEMS = 0", () => {
 });
 
 
-it("Should render header componenr with CART Items", () => {
+it("Should render header component with CART Items", () => {
   render(
     <BrowserRouter>
       <Provider store={appStore}>

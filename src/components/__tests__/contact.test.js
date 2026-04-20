@@ -2,7 +2,7 @@ import Contact from "../Contact";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom"
 
-test("shouls load contactUs Component", () => {
+test("should load contactUs Component", () => {
     render(<Contact />);
     const heading = screen.getByRole("heading");
     expect(heading).toBeInTheDocument();
