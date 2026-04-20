@@ -9,7 +9,7 @@ import userContext from "../utils/UserContext";
 const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurants] = useState([]);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [fetchError, setFetchError] = useState(null);
@@ -37,16 +37,16 @@ const Body = () => {
   const { isLoggedUser, setLoggedinInfo } = useContext(userContext);
 
   const handleSearch = useCallback(() => {
-    const filtered = listOfRestaurant.filter((res) =>
+    const filtered = listOfRestaurants.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredRestaurant(filtered);
-  }, [listOfRestaurant, searchText]);
+  }, [listOfRestaurants, searchText]);
 
   const handleTopRated = useCallback(() => {
-    const filtered = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
+    const filtered = listOfRestaurants.filter((res) => res.info.avgRating > 4.2);
     setFilteredRestaurant(filtered);
-  }, [listOfRestaurant]);
+  }, [listOfRestaurants]);
 
   if (onlineStatus === false) {
     return <h1>Looks like you are offline!! Check your Internet Connection</h1>;
@@ -60,7 +60,7 @@ const Body = () => {
     );
   }
 
-  return listOfRestaurant.length === 0 ? (
+  return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="flex flex-col">
