@@ -1,31 +1,29 @@
-import React, { useState } from 'react'
+import React from 'react';
 import Itemlist from './Itemlist';
 
-const ResCategory = ({ data, showItems, setShowIndex }) => {
-  const handlerClick = () => {
-    console.log("clicked");
-    // setShowitems(!showItems);
-    setShowIndex()
+const ResCategory = React.memo(({ data, showItems, setShowIndex }) => {
+  const handleClick = () => {
+    setShowIndex();
   };
 
   return (
     <div>
-      {/* Header */}
-      <div className="w-full my-6 bg-gray-100 shadow-lg p-4">
+      <div className="w-full my-6 bg-gray-100 shadow-lg p-4 rounded-xl">
         <div
           className="flex justify-between cursor-pointer"
-          onClick={handlerClick}
+          onClick={handleClick}
         >
           <span className="text-lg">
             {data.title} &nbsp;({data.itemCards.length})
           </span>
-          <span>🔽</span>
+          <span aria-label={showItems ? "Collapse" : "Expand"}>
+            {showItems ? "🔼" : "🔽"}
+          </span>
         </div>
         {showItems && <Itemlist items={data.itemCards} />}
       </div>
-      {/* Body */}
     </div>
   );
-};
+});
 
 export default ResCategory;
